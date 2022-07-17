@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+
+{% block title %} Continue {% endblock %}
+
+{% block content %}
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" 
+    role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" 
+        data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>   
+    {% endfor %}
+
+    <p>Continue from where you left off {{ usr2|safe }}</p>
+    <br>
+    <form method="post" class="form-control">
+        {{ form.hidden_tag() }}
+        {{ form.name.label(class='form-label') }}
+        {{ form.name(class='form-control', value=usr) }}
+        <br>
+        {{ form.email.label(class='form-label') }}
+        <br>
+        {{ form.email(class='form-control') }}
+        <br>
+        {{ form.submit(class='btn btn-info') }}
+    </form>
+
+{% endblock %}
